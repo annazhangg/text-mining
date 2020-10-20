@@ -18,8 +18,7 @@ def analyze_movie(movie):
 
 
 def main():
-    analyze_movie("Mulan")
-    analyze_movie("21 Jump Street")
+    analyze_movie("The Godfather")
 
 
 if __name__ == "__main__":
