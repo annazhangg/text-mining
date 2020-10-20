@@ -19,7 +19,7 @@ def review_extracter(movie):
         line = reviews["reviews"][i]["reviewText"]
         review_list.append(line)
     ###pickles list###
-    with open(f"{movie}.pickle", "wb") as f:
+    with open(f"{movie}_imdb.pickle", "wb") as f:
         pickle.dump(review_list, f)
     # with open(f"{movie}.pickle", "rb") as input_file:
     #     copy = pickle.load(input_file)
@@ -27,7 +27,7 @@ def review_extracter(movie):
 
 
 def main():
-    review_extracter("Hacksaw Ridge")
+    review_extracter("The Godfather")
 
 
 if __name__ == "__main__":

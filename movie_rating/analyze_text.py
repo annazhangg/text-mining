@@ -2,17 +2,20 @@ import string
 import pickle
 
 
-def process_file(movie):
+def process_file(movie, source):
     """Makes a histogram that contains the words from a file.
 
     movie: string
+    source: string
 
     returns: map from each word to the number of times it appears.
     """
     hist = {}
-    with open(f"{movie}.pickle", "rb") as input_file:
+    # opens pickle
+    with open(f"{movie}_{source}.pickle", "rb") as input_file:
         fp = pickle.load(input_file)
 
+    # removes extra chracters and stores into dictionary by frequency
     strippables = string.punctuation + string.whitespace
 
     for line in fp:
@@ -37,13 +40,15 @@ def most_common(hist, excluding_stopwords=False):
 
     returns: list of (frequency, word) pairs
     """
+    # imports stopword.txt and creates lists
     common_words = []
     stopwords = open("stopword.txt")
     stopwords_list = []
+    # turns stopwords.txt into list
     for line in stopwords:
         lin = line.strip()
         stopwords_list.append(lin)
-
+    # sorts dictionary by frequency and returns list of tupples
     for word, freq in hist.items():
         if not excluding_stopwords or not word in stopwords_list:
             common_words.append((freq, word))
@@ -63,8 +68,8 @@ def print_most_common(hist, num=10):
 
 
 def main():
-    movie = "Hacksaw Ridge"
-    hist = process_file(movie)
+    movie = "The Godfather"
+    hist = process_file(movie, "imdb")
     t = most_common(hist, excluding_stopwords=True)
     print("The most common words are:")
     for freq, word in t[0:20]:
