@@ -8,7 +8,6 @@ def review_extracter(movie):
     imdb = Imdb()
     url = imdb.search_for_title(movie)[0]
     reviews = imdb.get_title_user_reviews(url["imdb_id"])
-
     ### creates list of all reviews present on the front page###
     imdb = Imdb()
     url = imdb.search_for_title(movie)[0]
@@ -19,16 +18,12 @@ def review_extracter(movie):
         line = reviews["reviews"][i]["reviewText"]
         review_list.append(line)
     ###pickles list###
-    with open(f"{movie}.pickle", "wb") as f:
+    with open(f"{movie}_imdb.pickle", "wb") as f:
         pickle.dump(review_list, f)
     # with open(f"{movie}.pickle", "rb") as input_file:
     #     copy = pickle.load(input_file)
     # print(copy)
-
-
 def main():
-    review_extracter("Hacksaw Ridge")
-
-
+    review_extracter("Mulan")
 if __name__ == "__main__":
     main()
