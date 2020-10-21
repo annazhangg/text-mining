@@ -6,6 +6,7 @@ import os
 import matplotlib.pyplot as plt
 import scatterplot
 
+#This is a master function for all of our analysis tools.
  
 def analyze_movie(movie):
     """shows stats for movie reviews"""
